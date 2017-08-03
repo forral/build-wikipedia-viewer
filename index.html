@@ -5,17 +5,34 @@
 	<title>Build Wikipedia Viewer</title>
 </head>
 <body>
+	<input type="text">
 	<script
   src="http://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
   <script>
+
+  	var searchResult;
+  	var urlBuild = 'https://en.wikipedia.org//w/api.php?action=opensearch&format=json&maxlag=10&search=benfica' + '&callback=?';
+
   	// the `&callback=?` solution was taken from this post: https://stackoverflow.com/questions/3828982/xmlhttprequest-cannot-load-an-url-with-jquery
-		$.getJSON("https://en.wikipedia.org//w/api.php?action=opensearch&format=json&maxlag=10&search=benfica" + '&callback=?', function(data) {
-
+		$.getJSON(urlBuild, function(data) {
 			console.log(data);
+			searchResult = data;
 
+			console.log('Search keyword: ' + data[0]);
+			console.log('Title: ' + data[1][2]);
+			console.log('Description: ' + data[2][2]);
+			console.log('Link: ' + data[3][2]);
 		});
+
+		setTimeout(function() {
+			console.log('Search keyword: ' + searchResult[0]);
+			console.log('Title: ' + searchResult[1][2]);
+			console.log('Description: ' + searchResult[2][2]);
+			console.log('Link: ' + searchResult[3][2]);
+		}, 1000);
+
   </script>
 </body>
 </html>
