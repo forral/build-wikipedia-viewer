@@ -31,14 +31,16 @@
 
 	  	//the `&callback=?` solution was taken from this post: https://stackoverflow.com/questions/3828982/xmlhttprequest-cannot-load-an-url-with-jquery
 			$.getJSON(urlBuild, function(data) {
-				console.log(data);
-				console.log(data);
-				console.log('Search keyword: ' + data[0]);
-				console.log('Title: ' + data[1][2]);
-				console.log('Description: ' + data[2][2]);
-				console.log('Link: ' + data[3][2]);
-			});
 
+				for (var i = 0; i < data[1].length; i++) {
+					console.log('Title: ' + data[1][i]);
+					console.log('Description: ' + data[2][i]);
+					console.log('Link: ' + data[3][i]);
+					console.log('----');
+				}
+
+
+			});
 		});
   </script>
 </body>
