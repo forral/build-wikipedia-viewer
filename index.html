@@ -5,42 +5,78 @@
 	<title>Build Wikipedia Viewer</title>
 </head>
 <body>
-	<input type="text" class="search-input">
-	<button class="search-button">Search</button>
+	<header>
+		<input type="text" class="search-input">
+		<button class="search-button">Search</button>
+	</header>
+	<main>
+		<div id="out"></div>
+	</main>
 	<script
-  src="http://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+	  src="http://code.jquery.com/jquery-3.2.1.min.js"
+	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	  crossorigin="anonymous"></script>
   <script>
-
 
   	var buttonElement = document.getElementsByClassName('search-button')[0];
   	var inputElement = document.getElementsByClassName('search-input')[0];
+  	var output = document.getElementById('out');
   	inputElement.focus();
 
 		buttonElement.addEventListener('click', function() {
 
+			output.innerHTML = '<p>Loading...</p>';
 			var searchValue = inputElement.value;
 
 			if (searchValue === '') {
+				output.innerHTML = '<p>NO VALUE</p>';
 				console.log('NO VALUE');
 				return;
 			}
 
 			var urlBuild = 'https://en.wikipedia.org//w/api.php?action=opensearch&format=json&maxlag=10&search=' + searchValue + '&callback=?';
+			console.log(urlBuild);
 
 	  	//the `&callback=?` solution was taken from this post: https://stackoverflow.com/questions/3828982/xmlhttprequest-cannot-load-an-url-with-jquery
 			$.getJSON(urlBuild, function(data) {
 
+				output.innerHTML = '';
 				for (var i = 0; i < data[1].length; i++) {
 					console.log('Title: ' + data[1][i]);
 					console.log('Description: ' + data[2][i]);
 					console.log('Link: ' + data[3][i]);
 					console.log('----');
+					buildDivElement(data[1][i], data[3][i], data[2][i]);
 				}
-
-
 			});
+
+			function buildDivElement(title, link, description) {
+				// create a <div>
+				var divElement = document.createElement('div');
+
+					// create a <h2> with the title passed
+				var h2Element = document.createElement('h2');
+				h2Element.textContent = title;
+					// append the <h2> to the <div>
+				divElement.appendChild(h2Element);
+
+					// create an <a> with the href passed has link
+				var aElement = document.createElement('a');
+				aElement.textContent = link;
+				aElement.href = link;
+					// append the <a> to the <div>
+				divElement.appendChild(aElement);
+
+					// create a <p> with the description passed
+				var pElement = document.createElement('p');
+				pElement.textContent = description;
+					// append the <p> to the <div>
+				divElement.appendChild(pElement);
+
+				// append the div to the document.
+				output.appendChild(divElement);
+				console.log(divElement);
+			}
 		});
   </script>
 </body>
