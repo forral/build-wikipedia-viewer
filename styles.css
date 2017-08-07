@@ -26,6 +26,7 @@ body {
 header {
 	background-color: #FAFAFA;
 	padding: 0 10px;
+	border-bottom: 1px solid #ebebeb;
 }
 
 .logo {
@@ -47,7 +48,8 @@ input[type=text] {
 }
 
 main {
-	margin-left: 150px
+	margin-left: 150px;
+	margin-right: 300px;
 }
 
 .search-content {
