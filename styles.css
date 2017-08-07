@@ -19,6 +19,15 @@
 }
 /* end of Clearfix */
 
+body {
+ margin: 0;
+}
+
+header {
+	background-color: #FAFAFA;
+	padding: 0 10px;
+}
+
 .logo {
 	float: left;
 }
@@ -31,6 +40,24 @@
 	float: right;
 }
 
-h2 {
+input[type=text] {
+	padding: 10px 10px;
+	box-sizing: border-box;
+	margin-top: 25px;
+}
+
+main {
+	margin-left: 150px
+}
+
+.search-content {
+	margin-bottom: 40px;
+}
+
+.search-content h2 {
 	margin-bottom: 5px;
 }
+
+.search-content p {
+	margin-top: 8px;
+};
