@@ -1,0 +1,36 @@
+/*
+  ========================================
+  Clearfix
+  ========================================
+*/
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+
+.group:after {
+  clear: both;
+}
+
+.group {
+  clear: both;
+  *zoom: 1;
+}
+/* end of Clearfix */
+
+.logo {
+	float: left;
+}
+
+.logo img {
+	width: 100px;
+}
+
+.search {
+	float: right;
+}
+
+h2 {
+	margin-bottom: 5px;
+}
