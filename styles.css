@@ -34,17 +34,24 @@ header {
 }
 
 .logo img {
-	width: 100px;
+	width: 80px;
 }
 
 .search {
-	float: right;
+	margin-left: 140px;
 }
 
 input[type=text] {
 	padding: 10px 10px;
 	box-sizing: border-box;
-	margin-top: 25px;
+	margin-top: 20px;
+	width:500px;
+	font-size: 18px;
+}
+
+/* https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
+input:focus {
+	outline: none;
 }
 
 main {
