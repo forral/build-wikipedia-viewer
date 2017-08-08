@@ -8,11 +8,12 @@
 <body>
 	<header class="group">
 		<div class="logo">
-			<img src="http://logodatabases.com/wp-content/uploads/2012/03/wikipedia-w-logo.png" alt="">
+			<a href="https://en.wikipedia.org/wiki/Special:Random">
+				<img src="http://logodatabases.com/wp-content/uploads/2012/03/wikipedia-w-logo.png" alt="">
+			</a>
 		</div>
 		<div class="search">
-			<input type="text" class="search-input">
-			<button class="search-button">Search</button>
+			<input type="text" class="search-input" placeholder="Seach Wikipedia">
 		</div>
 	</header>
 	<main>
@@ -24,33 +25,45 @@
 	  crossorigin="anonymous">
 	</script>
   <script>
-  	var buttonElement = document.getElementsByClassName('search-button')[0];
   	var inputElement = document.getElementsByClassName('search-input')[0];
   	var output = document.getElementById('out');
   	inputElement.focus();
+  	var ENTER_KEY = 13;
+  	var allSearchResults = [];
 
-		buttonElement.addEventListener('click', function() {
+  	// https://github.com/forral/myTodoMVC/blob/master/todoApp.js#L97
+		inputElement.addEventListener('keyup', function(event) {
 
-			output.innerHTML = '<p>Loading...</p>';
+			if (event.keyCode === ENTER_KEY) {
 
-			var searchValue = inputElement.value;
-			searchValue = searchValue.trim();
-			inputElement.value = searchValue;
+				output.innerHTML = '<p>Loading...</p>';
 
-			if (searchValue.length < 1) {
-				output.innerHTML = '<p>NO VALUE</p>';
-				return;
-			}
+				var searchValue = inputElement.value;
+				searchValue = searchValue.trim();
+				inputElement.value = searchValue;
 
-	  	//the `&callback=?` solution was taken from this post: https://stackoverflow.com/questions/3828982/xmlhttprequest-cannot-load-an-url-with-jquery
-			var urlBuild = 'https://en.wikipedia.org//w/api.php?action=opensearch&format=json&maxlag=10&search=' + searchValue + '&callback=?';
-
-			$.getJSON(urlBuild, function(data) {
-				output.innerHTML = '';
-				for (var i = 0; i < data[1].length; i++) {
-					buildDivElement(data[1][i], data[3][i], data[2][i]);
+				if (searchValue.length < 1) {
+					output.innerHTML = '<p>NO VALUE</p>';
+					return;
 				}
-			});
+
+				allSearchResults.push(searchValue);
+
+		  	//the `&callback=?` solution was taken from this post: https://stackoverflow.com/questions/3828982/xmlhttprequest-cannot-load-an-url-with-jquery
+				var urlBuild = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&maxlag=10&search=' + searchValue + '&limit=' + '10' + '&callback=?';
+
+				$.getJSON(urlBuild, function(data) {
+					output.innerHTML = '';
+
+					if (data[1].length === 0) {
+						output.innerHTML = '<p>NO MATCH</p>';
+					}
+
+					for (var i = 0; i < data[1].length; i++) {
+						buildDivElement(data[1][i], data[3][i], data[2][i]);
+					}
+				});
+			}
 		});
 
 		function buildDivElement(title, link, description) {

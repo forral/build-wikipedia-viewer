@@ -47,6 +47,13 @@ input[type=text] {
 	margin-top: 20px;
 	width:500px;
 	font-size: 18px;
+	border: 2px solid lightgrey;
+  border-radius: 4px;
+  background-image: url('assets/icons/search.png');
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  background-position: 10px 10px;
+  background-size: 20px;
 }
 
 /* https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
