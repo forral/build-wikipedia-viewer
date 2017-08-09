@@ -29,7 +29,6 @@
   	var output = document.getElementById('out');
   	inputElement.focus();
   	var ENTER_KEY = 13;
-  	var allSearchResults = [];
 
   	// https://github.com/forral/myTodoMVC/blob/master/todoApp.js#L97
 		inputElement.addEventListener('keyup', function(event) {
@@ -47,10 +46,14 @@
 					return;
 				}
 
-				allSearchResults.push(searchValue);
+				// Saving search history (search keyword and date)
+				userSettings.searchHistory.push({
+					searchValue: searchValue, 
+					date: new Date()
+				});
 
 		  	//the `&callback=?` solution was taken from this post: https://stackoverflow.com/questions/3828982/xmlhttprequest-cannot-load-an-url-with-jquery
-				var urlBuild = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&maxlag=10&search=' + searchValue + '&limit=' + '10' + '&callback=?';
+				var urlBuild = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&maxlag=10&search=' + searchValue + '&limit=' + userSettings.numbOfArticles + '&callback=?';
 
 				$.getJSON(urlBuild, function(data) {
 					output.innerHTML = '';
@@ -84,6 +87,7 @@
 			// append the <a> to the <div>
 			divElement.appendChild(aElement);
 
+
 			// create a <p> with the description passed
 			var pElement = document.createElement('p');
 			pElement.textContent = description;
@@ -93,6 +97,12 @@
 			// append the div to the document.
 			output.appendChild(divElement);
 		}
+
+		var userSettings = {
+			numbOfArticles: 10,
+			searchHistory: []
+		}
+
   </script>
 </body>
 </html>
