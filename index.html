@@ -87,7 +87,6 @@
 			// append the <a> to the <div>
 			divElement.appendChild(aElement);
 
-
 			// create a <p> with the description passed
 			var pElement = document.createElement('p');
 			pElement.textContent = description;
@@ -103,6 +102,14 @@
 			searchHistory: []
 		}
 
+		function printSettings(obj) {
+			console.log('Number of articles for search: ' + obj.numbOfArticles);
+
+			for (var i = 0; i < obj.searchHistory.length; i++) {
+				console.log('Search: ' + obj.searchHistory[i].searchValue);
+				console.log('date: ' + obj.searchHistory[i].date);
+			}
+		}
   </script>
 </body>
 </html>
