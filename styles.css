@@ -30,13 +30,17 @@ body {
   max-height: 0;
 }
 
+.settings-menu td {
+	padding: 3px 0;
+}
+
 .show {
 	overflow: hidden;
   max-height: 500px;
 }
 
 table {
-	padding: 10px;
+	padding-left: 28px;
 }
 
 header {
@@ -47,6 +51,7 @@ header {
 
 .logo {
 	float: left;
+	margin-left: 22px;
 }
 
 .logo img {
@@ -54,11 +59,21 @@ header {
 }
 
 .search {
-	margin-left: 140px;
+	margin-left: 33px;
+	display: inline-block;
 }
 
 .menu {
 	float: right;
+}
+
+.menu ul {
+	margin-top: 3px;
+	list-style-type: none;
+}
+
+.menu li {
+	cursor: pointer;
 }
 
 input[type=text] {
@@ -96,4 +111,8 @@ main {
 
 .search-content p {
 	margin-top: 8px;
-};
+}
+
+.active {
+	color: grey;
+}

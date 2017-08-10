@@ -9,21 +9,23 @@
 <body>
 	<div class="settings-menu">
 			<table>
-				<tr>
-					<td>item</td>
-					<td>description</td>
-					<td><button>do something!</button></td>
-				</tr>
-				<tr>
-					<td>item</td>
-					<td>description</td>
-					<td><button>do something!</button></td>
-				</tr>
-				<tr>
-					<td>item</td>
-					<td>description</td>
-					<td><button>do something!</button></td>
-				</tr>
+				<tbody>
+					<tr>
+						<td><i class="fa fa-moon-o" aria-hidden="true"></i></td>
+						<td>Night vision</td>
+						<td><input type="checkbox"></td>
+					</tr>
+					<tr>
+						<td><i class="fa fa-list-ol" aria-hidden="true"></i></td>
+						<td>How many articles per search</td>
+						<td><input type="checkbox"></td>
+					</tr>
+					<tr>
+						<td><i class="fa fa-history" aria-hidden="true"></i></td>
+						<td>Show history widget</td>
+						<td><input type="checkbox"></td>
+					</tr>
+				</tbody>
 			</table>
 	</div>
 	<header>
@@ -34,11 +36,10 @@
 		</div>
 		<div class="search">
 			<input type="text" class="search-input" placeholder="Seach Wikipedia">
-			<button onclick="toggleSettingsMenu();">settings</button>
 		</div>
 		<div class="menu">
 			<ul>
-				<li><i class="fa fa-cog" aria-hidden="true"></i></li>
+				<li onclick="toggleSettingsMenu();"><i class="fa fa-cog" aria-hidden="true"></i></li>
 			</ul>
 		</div>
 		<div class="group"></div>
@@ -168,6 +169,8 @@
 
 		function toggleSettingsMenu() {
 			var divElement = document.getElementsByClassName('settings-menu')[0];
+			var iconElement = document.getElementsByTagName('i')[0];
+			iconElement.classList.toggle('active')
 			divElement.classList.toggle('show');
 		}
   </script>
