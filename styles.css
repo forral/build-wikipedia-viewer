@@ -23,6 +23,17 @@ body {
  margin: 0;
 }
 
+.settings-menu {
+	transition: max-height 300ms ease-in;
+  overflow: hidden;
+  max-height: 0;
+}
+
+.show {
+	overflow: hidden;
+  max-height: 500px;
+}
+
 header {
 	background-color: #FAFAFA;
 	padding: 0 10px;

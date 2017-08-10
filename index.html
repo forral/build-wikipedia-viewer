@@ -6,6 +6,13 @@
 </head>
 <link rel="stylesheet" href="styles.css">
 <body>
+	<div class="settings-menu">
+		<ul>
+			<li>Night Visio</li>
+			<li>How many rearch results: 10</li>
+			<li>Show history widget</li>
+		</ul>
+	</div>
 	<header class="group">
 		<div class="logo">
 			<a href="https://en.wikipedia.org/wiki/Special:Random">
@@ -14,6 +21,7 @@
 		</div>
 		<div class="search">
 			<input type="text" class="search-input" placeholder="Seach Wikipedia">
+			<button onclick="toggleSettingsMenu();">settings</button>
 		</div>
 	</header>
 	<main>
@@ -43,6 +51,11 @@
 
 				if (searchValue.length < 1) {
 					output.innerHTML = '<p>NO VALUE</p>';
+					return;
+				}
+
+				if (searchValue === 'show:settings') {
+					printSettings(userSettings);
 					return;
 				}
 
@@ -124,7 +137,7 @@
 				pTitleElement.textContent = 'Search: ' + obj.searchHistory[i].searchValue;
 				liElement.appendChild(pTitleElement);
 
-				pDateElement.textContent = 'date: ' + obj.searchHistory[i].date;
+				pDateElement.textContent = obj.searchHistory[i].date;
 				liElement.appendChild(pDateElement);
 
 				ulElement.appendChild(liElement);
@@ -132,6 +145,11 @@
 
 			divElement.appendChild(ulElement);
 			output.appendChild(divElement);
+		}
+
+		function toggleSettingsMenu() {
+			var divElement = document.getElementsByClassName('settings-menu')[0];
+			divElement.classList.toggle('show');
 		}
   </script>
 </body>
