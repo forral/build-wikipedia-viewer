@@ -24,6 +24,7 @@ body {
 }
 
 .settings-menu {
+	background-color: #FAFAFA;
 	transition: max-height 300ms ease-in;
   overflow: hidden;
   max-height: 0;
@@ -34,8 +35,12 @@ body {
   max-height: 500px;
 }
 
+table {
+	padding: 10px;
+}
+
 header {
-	background-color: #FAFAFA;
+	background-color: #F5F5F5;
 	padding: 0 10px;
 	border-bottom: 1px solid #ebebeb;
 }
@@ -50,6 +55,10 @@ header {
 
 .search {
 	margin-left: 140px;
+}
+
+.menu {
+	float: right;
 }
 
 input[type=text] {

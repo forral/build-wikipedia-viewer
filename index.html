@@ -2,18 +2,31 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<script src="https://use.fontawesome.com/36200aa86b.js"></script>
 	<title>Build Wikipedia Viewer</title>
 </head>
 <link rel="stylesheet" href="styles.css">
 <body>
 	<div class="settings-menu">
-		<ul>
-			<li>Night Visio</li>
-			<li>How many rearch results: 10</li>
-			<li>Show history widget</li>
-		</ul>
+			<table>
+				<tr>
+					<td>item</td>
+					<td>description</td>
+					<td><button>do something!</button></td>
+				</tr>
+				<tr>
+					<td>item</td>
+					<td>description</td>
+					<td><button>do something!</button></td>
+				</tr>
+				<tr>
+					<td>item</td>
+					<td>description</td>
+					<td><button>do something!</button></td>
+				</tr>
+			</table>
 	</div>
-	<header class="group">
+	<header>
 		<div class="logo">
 			<a href="https://en.wikipedia.org/wiki/Special:Random">
 				<img src="http://logodatabases.com/wp-content/uploads/2012/03/wikipedia-w-logo.png" alt="">
@@ -23,6 +36,12 @@
 			<input type="text" class="search-input" placeholder="Seach Wikipedia">
 			<button onclick="toggleSettingsMenu();">settings</button>
 		</div>
+		<div class="menu">
+			<ul>
+				<li><i class="fa fa-cog" aria-hidden="true"></i></li>
+			</ul>
+		</div>
+		<div class="group"></div>
 	</header>
 	<main>
 		<div id="out"></div>
