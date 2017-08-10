@@ -100,15 +100,38 @@
 		var userSettings = {
 			numbOfArticles: 10,
 			searchHistory: []
-		}
+		};
 
 		function printSettings(obj) {
-			console.log('Number of articles for search: ' + obj.numbOfArticles);
+			output.innerHTML = '';
+			// create a <div>
+			var divElement = document.createElement('div');
+			var ulElement = document.createElement('ul');
+
+			var h3numbSearchTitle = document.createElement('h3');
+			h3numbSearchTitle.textContent = 'Number of articles for search: ' + obj.numbOfArticles;
+			divElement.appendChild(h3numbSearchTitle);
+
+			var h3HistoryTitle = document.createElement('h3');
+			h3HistoryTitle.textContent = 'Search History:';
+			divElement.appendChild(h3HistoryTitle);
 
 			for (var i = 0; i < obj.searchHistory.length; i++) {
-				console.log('Search: ' + obj.searchHistory[i].searchValue);
-				console.log('date: ' + obj.searchHistory[i].date);
+				var liElement = document.createElement('li');
+				var pTitleElement = document.createElement('p');
+				var pDateElement = document.createElement('p');
+
+				pTitleElement.textContent = 'Search: ' + obj.searchHistory[i].searchValue;
+				liElement.appendChild(pTitleElement);
+
+				pDateElement.textContent = 'date: ' + obj.searchHistory[i].date;
+				liElement.appendChild(pDateElement);
+
+				ulElement.appendChild(liElement);
 			}
+
+			divElement.appendChild(ulElement);
+			output.appendChild(divElement);
 		}
   </script>
 </body>
