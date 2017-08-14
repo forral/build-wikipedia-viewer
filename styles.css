@@ -135,6 +135,7 @@ main {
   
   -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
   animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  margin-right: 1px;
 }
 
 .spinner .rect2 {
