@@ -53,11 +53,27 @@
 	  crossorigin="anonymous">
 	</script>
   <script>
+
+		var util = {
+			store: function (namespace, data) {
+				if (arguments.length > 1) {
+					return localStorage.setItem(namespace, JSON.stringify(data));
+				} else {
+					var store = localStorage.getItem(namespace);
+					return (store && JSON.parse(store)) || {numbOfArticles: 10, searchHistory: []};
+				}
+			}
+		};
+
   	var inputElement = document.getElementsByClassName('search-input')[0];
   	var output = document.getElementById('out');
   	var numberImput = document.getElementsByClassName('number-of-articles')[0];
   	inputElement.focus();
   	var ENTER_KEY = 13;
+
+		var userSettings = util.store('userSettings');
+
+		numberImput.value = userSettings.numbOfArticles;
 
   	// https://github.com/forral/myTodoMVC/blob/master/todoApp.js#L97
 		inputElement.addEventListener('keyup', function(event) {
@@ -85,6 +101,8 @@
 					searchValue: searchValue, 
 					date: new Date()
 				});
+
+				util.store('userSettings', userSettings);
 
 		  	//the `&callback=?` solution was taken from this post: https://stackoverflow.com/questions/3828982/xmlhttprequest-cannot-load-an-url-with-jquery
 				var urlBuild = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&maxlag=10&search=' + searchValue + '&limit=' + userSettings.numbOfArticles + '&callback=?';
@@ -131,18 +149,10 @@
 			output.appendChild(divElement);
 		}
 
-		var userSettings = {
-			numbOfArticles: 10,
-			searchHistory: []
-		};
-
-		numberImput.value = userSettings.numbOfArticles;
-
-
 		numberImput.addEventListener('change', function(){
 			userSettings.numbOfArticles = numberImput.valueAsNumber;
+			util.store('userSettings', userSettings);
 		});
-
 
 		function printSettings(obj) {
 			output.innerHTML = '';
