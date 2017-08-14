@@ -80,7 +80,7 @@
 
 			if (event.keyCode === ENTER_KEY) {
 
-				output.innerHTML = '<p>Loading...</p>';
+				loadingAnimation();
 
 				var searchValue = inputElement.value;
 				searchValue = searchValue.trim();
@@ -121,6 +121,11 @@
 			}
 		});
 
+		numberImput.addEventListener('change', function(){
+			userSettings.numbOfArticles = numberImput.valueAsNumber;
+			util.store('userSettings', userSettings);
+		});
+
 		function buildDivElement(title, link, description) {
 			// create a <div>
 			var divElement = document.createElement('div');
@@ -148,11 +153,6 @@
 			// append the div to the document.
 			output.appendChild(divElement);
 		}
-
-		numberImput.addEventListener('change', function(){
-			userSettings.numbOfArticles = numberImput.valueAsNumber;
-			util.store('userSettings', userSettings);
-		});
 
 		function printSettings(obj) {
 			output.innerHTML = '';
@@ -192,6 +192,35 @@
 			iconElement.classList.toggle('active');
 			divElement.classList.toggle('show');
 		}
+
+		function loadingAnimation() {
+
+			var divSpinner = document.createElement('div');
+			divSpinner.className = 'spinner';
+
+			var divRect1 = document.createElement('div');
+			divRect1.className = 'rect1';
+			divSpinner.appendChild(divRect1);
+
+			var divRect2 = document.createElement('div');
+			divRect2.className = 'rect2';
+			divSpinner.appendChild(divRect2);
+
+			var divRect3 = document.createElement('div');
+			divRect3.className = 'rect3';
+			divSpinner.appendChild(divRect3);
+
+			var divRect4 = document.createElement('div');
+			divRect4.className = 'rect4';
+			divSpinner.appendChild(divRect4);
+
+			var divRect5 = document.createElement('div');
+			divRect5.className = 'rect5';
+			divSpinner.appendChild(divRect5);
+
+			output.appendChild(divSpinner);
+		}
+
   </script>
 </body>
 </html>
