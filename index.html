@@ -23,7 +23,7 @@
 					<tr>
 						<td><i class="fa fa-history" aria-hidden="true"></i></td>
 						<td>Show history widget</td>
-						<td><input type="checkbox"></td>
+						<td><input type="checkbox" class="widget-checkbox"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -44,9 +44,15 @@
 		</div>
 		<div class="group"></div>
 	</header>
-	<main>
-		<div id="out"></div>
-	</main>
+	<div class="grind">
+		<main>
+			<div id="out"></div>
+		</main><!--
+		--><aside>
+			<div id="widget" class="hide">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae eius facere sit qui, laboriosam neque aspernatur expedita deleniti! Dolor illo corporis delectus quo assumenda minus exercitationem adipisci quasi fugiat. Ab.
+			</div>
+		</aside>
+	</div>
 	<script
 	  src="http://code.jquery.com/jquery-3.2.1.min.js"
 	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -60,7 +66,7 @@
 					return localStorage.setItem(namespace, JSON.stringify(data));
 				} else {
 					var store = localStorage.getItem(namespace);
-					return (store && JSON.parse(store)) || {numbOfArticles: 10, searchHistory: []};
+					return (store && JSON.parse(store)) || {numbOfArticles: 10, searchHistory: [], widget: false};
 				}
 			}
 		};
@@ -68,11 +74,13 @@
   	var inputElement = document.getElementsByClassName('search-input')[0];
   	var output = document.getElementById('out');
   	var numberImput = document.getElementsByClassName('number-of-articles')[0];
+  	var widgetCheckbox = document.getElementsByClassName('widget-checkbox')[0];
   	inputElement.focus();
   	var ENTER_KEY = 13;
 		var userSettings = util.store('userSettings');
 
 		numberImput.value = userSettings.numbOfArticles;
+		userSettings.checked = userSettings.widget;
 
   	// https://github.com/forral/myTodoMVC/blob/master/todoApp.js#L97
 		inputElement.addEventListener('keyup', function(event) {
@@ -123,6 +131,10 @@
 		numberImput.addEventListener('change', function(){
 			userSettings.numbOfArticles = numberImput.valueAsNumber;
 			util.store('userSettings', userSettings);
+		});
+
+		widgetCheckbox.addEventListener('change', function(){
+			toggleHistoryWidget();
 		});
 
 		function buildDivElement(title, link, description) {
@@ -190,6 +202,11 @@
 			var iconElement = document.getElementsByClassName('fa-cog')[0];
 			iconElement.classList.toggle('active');
 			divElement.classList.toggle('show');
+		}
+
+		function toggleHistoryWidget() {
+			var divElement = document.getElementById('widget');
+			divElement.classList.toggle('hide');
 		}
 
 		function loadingAnimation() {
