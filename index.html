@@ -59,7 +59,6 @@
 	  crossorigin="anonymous">
 	</script>
   <script>
-
 		var util = {
 			store: function (namespace, data) {
 				if (arguments.length > 1) {
@@ -75,16 +74,20 @@
   	var output = document.getElementById('out');
   	var numberImput = document.getElementsByClassName('number-of-articles')[0];
   	var widgetCheckbox = document.getElementsByClassName('widget-checkbox')[0];
+
   	inputElement.focus();
-  	var ENTER_KEY = 13;
+
 		var userSettings = util.store('userSettings');
 
 		numberImput.value = userSettings.numbOfArticles;
-		userSettings.checked = userSettings.widget;
+		widgetCheckbox.checked = userSettings.widget;
+		toggleHistoryWidget();
+
 
   	// https://github.com/forral/myTodoMVC/blob/master/todoApp.js#L97
 		inputElement.addEventListener('keyup', function(event) {
 
+			var ENTER_KEY = 13;
 			if (event.keyCode === ENTER_KEY) {
 
 				loadingAnimation();
@@ -206,7 +209,15 @@
 
 		function toggleHistoryWidget() {
 			var divElement = document.getElementById('widget');
-			divElement.classList.toggle('hide');
+
+			if (widgetCheckbox.checked) {
+				divElement.className = '';
+				userSettings.widget = true;
+			} else {
+				divElement.className = 'hide';
+				userSettings.widget = false;
+			}
+			util.store('userSettings', userSettings);
 		}
 
 		function loadingAnimation() {
