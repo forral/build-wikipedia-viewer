@@ -44,12 +44,17 @@
 		</div>
 		<div class="group"></div>
 	</header>
-	<div class="grind">
+	<div class="grid">
 		<main>
 			<div id="out"></div>
 		</main><!--
 		--><aside>
-			<div id="widget" class="hide">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae eius facere sit qui, laboriosam neque aspernatur expedita deleniti! Dolor illo corporis delectus quo assumenda minus exercitationem adipisci quasi fugiat. Ab.
+			<div id="widget" class="hide">
+				<h3>Search History</h3>
+				<p>last 10 searches</p>
+				<hr>
+				<ul id="widget-content">
+				</ul>
 			</div>
 		</aside>
 	</div>
@@ -78,6 +83,8 @@
   	inputElement.focus();
 
 		var userSettings = util.store('userSettings');
+
+		printHistoryWidget(userSettings);
 
 		numberImput.value = userSettings.numbOfArticles;
 		widgetCheckbox.checked = userSettings.widget;
@@ -113,6 +120,7 @@
 				});
 
 				util.store('userSettings', userSettings);
+				printHistoryWidget(userSettings);
 
 		  	//the `&callback=?` solution was taken from this post: https://stackoverflow.com/questions/3828982/xmlhttprequest-cannot-load-an-url-with-jquery
 				var urlBuild = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&maxlag=10&search=' + searchValue + '&limit=' + userSettings.numbOfArticles + '&callback=?';
@@ -218,6 +226,25 @@
 				userSettings.widget = false;
 			}
 			util.store('userSettings', userSettings);
+		}
+
+		function printHistoryWidget(obj) {
+
+			var ulElement = document.getElementById('widget-content');
+
+			for (var i = 0; i < obj.searchHistory.length; i++) {
+				var liElement = document.createElement('li');
+				var pTitleElement = document.createElement('p');
+				var pDateElement = document.createElement('p');
+
+				pTitleElement.textContent = obj.searchHistory[i].searchValue;
+				liElement.appendChild(pTitleElement);
+
+				pDateElement.textContent = obj.searchHistory[i].date;
+				liElement.appendChild(pDateElement);
+
+				ulElement.appendChild(liElement);
+			}	
 		}
 
 		function loadingAnimation() {

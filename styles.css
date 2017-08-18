@@ -30,6 +30,7 @@
 .grid {
   margin: 0 auto;
   width: 960px;
+  padding: 0 0;
 }
 
 body {
@@ -37,65 +38,65 @@ body {
 }
 
 .settings-menu {
-	background-color: #FAFAFA;
-	transition: max-height 300ms ease-in;
+  background-color: #FAFAFA;
+  transition: max-height 300ms ease-in;
   overflow: hidden;
   max-height: 0;
 }
 
 .settings-menu td {
-	padding: 3px 0;
+  padding: 3px 0;
 }
 
 .show {
-	overflow: hidden;
+  overflow: hidden;
   max-height: 500px;
 }
 
 table {
-	padding-left: 28px;
+  padding-left: 28px;
 }
 
 header {
-	background-color: #F5F5F5;
-	padding: 0 10px;
-	border-bottom: 1px solid #ebebeb;
+  background-color: #F5F5F5;
+  padding: 0 10px;
+  border-bottom: 1px solid #ebebeb;
 }
 
 .logo {
-	float: left;
-	margin-left: 22px;
+  float: left;
+  margin-left: 22px;
 }
 
 .logo img {
-	width: 80px;
+  width: 80px;
 }
 
 .search {
-	margin-left: 33px;
-	display: inline-block;
+  margin-left: 42px;
+  display: inline-block;
 }
 
 .menu {
-	float: right;
+  float: right;
 }
 
 .menu ul {
-	margin-top: 3px;
-	list-style-type: none;
+  margin-top: 3px;
+  list-style-type: none;
 }
 
 .menu li {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 input[type=text] {
-	padding: 10px 10px;
-	box-sizing: border-box;
-	margin-top: 20px;
-	width:500px;
-	font-size: 18px;
-	border: 2px solid lightgrey;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  width: 615px;
+  font-size: 18px;
+  border: 2px solid lightgrey;
   border-radius: 4px;
   background-image: url('assets/icons/search.png');
   background-repeat: no-repeat;
@@ -106,7 +107,7 @@ input[type=text] {
 
 /* https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
 input:focus {
-	outline: none;
+  outline: none;
 }
 
 main,
@@ -116,7 +117,8 @@ aside {
 }
 
 main {
-  width: 66.66%;  
+  width: 66.66%;
+  padding-right: 20px;;  
 }
 
 aside {
@@ -124,11 +126,13 @@ aside {
 }
 
 #out {
-  padding-left: 40px;
+  padding-left: 0;
 }
 
 #widget {
   margin-top: 20px;
+  padding: 10px;
+  border: 1px solid lightgrey;;
 }
 
 .hide { 
@@ -140,19 +144,20 @@ aside {
 }
 
 .search-content {
-	margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .search-content h2 {
-	margin-bottom: 5px;
+  margin-bottom: 0;
 }
 
 .search-content p {
-	margin-top: 8px;
+  margin-top: 2px;
+  color: #545454;
 }
 
 .active {
-	color: grey;
+  color: grey;
 }
 
 table {
