@@ -232,19 +232,26 @@
 		function printHistoryWidget(obj) {
 			var ulElement = document.getElementById('widget-content');
 			ulElement.textContent = '';
-			console.log(obj.searchHistory);
-			console.log(userSettings.searchHistory);
+
+			var histoySearchArr = [];
 
 			for (var i = obj.searchHistory.length - 1; i >= 0; --i) {
+				histoySearchArr.push(obj.searchHistory[i]);
+			}
+
+			histoySearchArr = histoySearchArr.slice(0, 10);
+			console.log(histoySearchArr);
+
+			for (var j = 0; j < histoySearchArr.length; j++) {
 
 				var liElement = document.createElement('li');
 				var pTitleElement = document.createElement('p');
 				var pDateElement = document.createElement('p');
 
-				pTitleElement.textContent = obj.searchHistory[i].searchValue;
+				pTitleElement.textContent = histoySearchArr[j].searchValue;
 				liElement.appendChild(pTitleElement);
 
-				pDateElement.textContent = obj.searchHistory[i].date;
+				pDateElement.textContent = histoySearchArr[j].date;
 				liElement.appendChild(pDateElement);
 
 				ulElement.appendChild(liElement);
