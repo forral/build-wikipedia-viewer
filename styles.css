@@ -35,6 +35,7 @@
 
 body {
  margin: 0;
+ font-family: arial,sans-serif;
 }
 
 .settings-menu {
@@ -96,8 +97,8 @@ input[type=text] {
   margin-top: 20px;
   width: 615px;
   font-size: 18px;
-  border: 2px solid lightgrey;
-  border-radius: 4px;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
   background-image: url('assets/icons/search.png');
   background-repeat: no-repeat;
   padding-left: 40px;
@@ -130,9 +131,29 @@ aside {
 }
 
 #widget {
-  margin-top: 20px;
   padding: 10px;
-  border: 1px solid lightgrey;;
+  margin: 20px;
+  /* google.com widget styles */
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  border-radius: 2px;
+}
+
+#widget ul {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+#widget-content li p {
+  margin: 0;
+}
+
+#widget-content li {
+  margin-bottom: 20px;
+}
+
+#widget-content li p:nth-child(2) {
+  font-size: 12px;
+  color: #545454;
 }
 
 .hide { 
@@ -148,12 +169,19 @@ aside {
 }
 
 .search-content h2 {
+  font-size: 18px;
+  font-weight: normal;
   margin-bottom: 0;
+}
+
+.search-content a {
+  font-size: 14px;
 }
 
 .search-content p {
   margin-top: 2px;
   color: #545454;
+  font-size: 13px;
 }
 
 .active {
