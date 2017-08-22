@@ -13,7 +13,7 @@
 					<tr>
 						<td><i class="fa fa-moon-o" aria-hidden="true"></i></td>
 						<td>Night vision</td>
-						<td><input type="checkbox"></td>
+						<td><input type="checkbox" id="nigth-vision"></td>
 					</tr>
 					<tr>
 						<td><i class="fa fa-list-ol" aria-hidden="true"></i></td>
@@ -31,7 +31,7 @@
 	<header>
 		<div class="logo">
 			<a href="https://en.wikipedia.org/wiki/Special:Random">
-				<img src="http://logodatabases.com/wp-content/uploads/2012/03/wikipedia-w-logo.png" alt="">
+				<img class="wiki-logo" src="assets/images/wikipedia-logo-black.png" alt="wikipedia logo">
 			</a>
 		</div>
 		<div class="search">
@@ -79,6 +79,8 @@
   	var output = document.getElementById('out');
   	var numberImput = document.getElementsByClassName('number-of-articles')[0];
   	var widgetCheckbox = document.getElementsByClassName('widget-checkbox')[0];
+  	var nigthVision = document.getElementById('nigth-vision');
+  	var iconElement = document.getElementsByClassName('fa-cog')[0];
 
   	inputElement.focus();
 
@@ -89,7 +91,6 @@
 		numberImput.value = userSettings.numbOfArticles;
 		widgetCheckbox.checked = userSettings.widget;
 		toggleHistoryWidget();
-
 
   	// https://github.com/forral/myTodoMVC/blob/master/todoApp.js#L97
 		inputElement.addEventListener('keyup', function(event) {
@@ -146,6 +147,11 @@
 
 		widgetCheckbox.addEventListener('change', function(){
 			toggleHistoryWidget();
+		});
+
+		nigthVision.addEventListener('change', function() {
+			console.log(nigthVision.checked);
+			nightVisionFixedElms();
 		});
 
 		function buildDivElement(title, link, description) {
@@ -210,7 +216,6 @@
 
 		function toggleSettingsMenu() {
 			var divElement = document.getElementsByClassName('settings-menu')[0];
-			var iconElement = document.getElementsByClassName('fa-cog')[0];
 			iconElement.classList.toggle('active');
 			divElement.classList.toggle('show');
 		}
@@ -283,6 +288,27 @@
 
 			output.appendChild(divSpinner);
 		}
+
+		function nightVisionFixedElms() {
+			var hiddenMenu = document.getElementsByClassName('settings-menu')[0];
+			hiddenMenu.classList.toggle('settings-menu-dark-theme');
+
+			var headerElm = document.getElementsByTagName('header')[0];
+			headerElm.classList.toggle('header-dark-theme');
+
+			iconElement.classList.toggle('fa-cog-night-theme');
+
+			var wikiLogo = document.getElementsByClassName('wiki-logo')[0];
+			var wikiLogoSrc = wikiLogo.src;
+
+			if (wikiLogoSrc.indexOf('white') != -1) {
+				document.getElementsByClassName('wiki-logo')[0].src = 'assets/images/wikipedia-logo-black.png';
+			} else {
+				document.getElementsByClassName('wiki-logo')[0].src = 'assets/images/wikipedia-logo-white.png';
+			}
+
+		}
+
   </script>
 </body>
 </html>

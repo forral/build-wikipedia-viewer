@@ -45,6 +45,11 @@ body {
   max-height: 0;
 }
 
+.settings-menu-dark-theme {
+  background-color: #535353;
+  color: #BDBDBD;;
+}
+
 .settings-menu td {
   padding: 3px 0;
 }
@@ -62,6 +67,10 @@ header {
   background-color: #F5F5F5;
   padding: 0 10px;
   border-bottom: 1px solid #ebebeb;
+}
+
+.header-dark-theme {
+  background-color: #202020;
 }
 
 .logo {
@@ -109,6 +118,10 @@ input[type=text] {
 /* https://stackoverflow.com/questions/1457849/how-to-remove-the-border-highlight-on-an-input-text-element */
 input:focus {
   outline: none;
+}
+
+.fa-cog-night-theme {
+  color: white;
 }
 
 main,
