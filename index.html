@@ -77,7 +77,7 @@
 
   	var inputElement = document.getElementsByClassName('search-input')[0];
   	var output = document.getElementById('out');
-  	var numberImput = document.getElementsByClassName('number-of-articles')[0];
+  	var numberInput = document.getElementsByClassName('number-of-articles')[0];
   	var widgetCheckbox = document.getElementsByClassName('widget-checkbox')[0];
   	var nigthVision = document.getElementById('nigth-vision');
   	var iconElement = document.getElementsByClassName('fa-cog')[0];
@@ -88,7 +88,7 @@
 
 		printHistoryWidget(userSettings);
 
-		numberImput.value = userSettings.numbOfArticles;
+		numberInput.value = userSettings.numbOfArticles;
 		widgetCheckbox.checked = userSettings.widget;
 		toggleHistoryWidget();
 
@@ -140,8 +140,8 @@
 			}
 		});
 
-		numberImput.addEventListener('change', function(){
-			userSettings.numbOfArticles = numberImput.valueAsNumber;
+		numberInput.addEventListener('change', function(){
+			userSettings.numbOfArticles = numberInput.valueAsNumber;
 			util.store('userSettings', userSettings);
 		});
 
@@ -150,15 +150,7 @@
 		});
 
 		nigthVision.addEventListener('change', function() {
-
 			nightVisionFixedElms();
-
-			// checking if the checkbox of the dark theme is selected.
-			if (userSettings.darkTheme) {
-				output.className = 'sc-dark-theme';
-			} else {
-				output.className = '';
-			}
 		});
 
 		function buildDivElement(title, link, description) {
@@ -298,6 +290,17 @@
 		}
 
 		function nightVisionFixedElms() {
+			
+			// checking if the checkbox of the dark theme is selected.
+			if (nigthVision.checked) {
+				output.className = 'sc-dark-theme';
+				userSettings.darkTheme = true;
+			} else {
+				output.className = '';
+				userSettings.darkTheme = false;
+			}
+			util.store('userSettings', userSettings);
+
 			var hiddenMenu = document.getElementsByClassName('settings-menu')[0];
 			hiddenMenu.classList.toggle('settings-menu-dark-theme');
 
@@ -320,8 +323,6 @@
 			var body = document.getElementsByTagName('body')[0];
 			body.classList.toggle('body-dark-theme');
 
-			// update settings
-			userSettings.darkTheme = !userSettings.darkTheme;
 			console.log(userSettings.darkTheme);
 		}
 
