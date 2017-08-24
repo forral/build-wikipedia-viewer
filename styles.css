@@ -39,7 +39,7 @@ body {
 }
 
 .body-dark-theme {
-  background-color: #202020;
+  background-color: #272727;
 }
 
 .settings-menu {
@@ -199,6 +199,14 @@ aside {
   margin-top: 2px;
   color: #545454;
   font-size: 13px;
+}
+
+.sc-dark-theme {
+  color: #BDBDBD;
+}
+
+.sc-dark-theme a {
+  color: #638BD1;
 }
 
 .active {

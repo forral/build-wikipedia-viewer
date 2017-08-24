@@ -70,7 +70,7 @@
 					return localStorage.setItem(namespace, JSON.stringify(data));
 				} else {
 					var store = localStorage.getItem(namespace);
-					return (store && JSON.parse(store)) || {numbOfArticles: 10, searchHistory: [], widget: false};
+					return (store && JSON.parse(store)) || {numbOfArticles: 10, searchHistory: [], widget: false, darkTheme: false};
 				}
 			}
 		};
@@ -150,11 +150,19 @@
 		});
 
 		nigthVision.addEventListener('change', function() {
-			console.log(nigthVision.checked);
+
 			nightVisionFixedElms();
+
+			// checking if the checkbox of the dark theme is selected.
+			if (userSettings.darkTheme) {
+				output.className = 'sc-dark-theme';
+			} else {
+				output.className = '';
+			}
 		});
 
 		function buildDivElement(title, link, description) {
+
 			// create a <div>
 			var divElement = document.createElement('div');
 			divElement.className = 'search-content';
@@ -312,6 +320,9 @@
 			var body = document.getElementsByTagName('body')[0];
 			body.classList.toggle('body-dark-theme');
 
+			// update settings
+			userSettings.darkTheme = !userSettings.darkTheme;
+			console.log(userSettings.darkTheme);
 		}
 
   </script>
