@@ -38,6 +38,10 @@ body {
  font-family: arial,sans-serif;
 }
 
+.body-dark-theme {
+  background-color: #202020;
+}
+
 .settings-menu {
   background-color: #FAFAFA;
   transition: max-height 300ms ease-in;
@@ -75,7 +79,7 @@ header {
 
 .logo {
   float: left;
-  margin-left: 22px;
+  margin: 10px 0 10px 22px;
 }
 
 .logo img {
@@ -103,7 +107,7 @@ header {
 input[type=text] {
   padding: 10px 10px;
   box-sizing: border-box;
-  margin-top: 20px;
+  margin-top: 25px;
   width: 615px;
   font-size: 18px;
   border: 1px solid lightgrey;
