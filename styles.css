@@ -35,7 +35,7 @@
 
 body {
  margin: 0;
- font-family: arial,sans-serif;
+ font-family: arial, sans-serif;
 }
 
 .body-dark-theme {
@@ -43,15 +43,18 @@ body {
 }
 
 .settings-menu {
-  background-color: #FAFAFA;
   transition: max-height 300ms ease-in;
   overflow: hidden;
   max-height: 0;
 }
 
-.settings-menu-dark-theme {
+.sm-light.theme {
+  background-color: #FAFAFA;
+}
+
+.sm-dark-theme {
   background-color: #535353;
-  color: #BDBDBD;;
+  color: #BDBDBD;
 }
 
 .settings-menu td {

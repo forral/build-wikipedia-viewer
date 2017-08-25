@@ -291,39 +291,23 @@
 
 		function nightVisionFixedElms() {
 			
-			// checking if the checkbox of the dark theme is selected.
 			if (nigthVision.checked) {
-				output.className = 'sc-dark-theme';
-				userSettings.darkTheme = true;
+				console.log('true');
 			} else {
-				output.className = '';
-				userSettings.darkTheme = false;
+				console.log('false');
 			}
-			util.store('userSettings', userSettings);
 
-			var hiddenMenu = document.getElementsByClassName('settings-menu')[0];
-			hiddenMenu.classList.toggle('settings-menu-dark-theme');
-
-			var headerElm = document.getElementsByTagName('header')[0];
-			headerElm.classList.toggle('header-dark-theme');
-
-			iconElement.classList.toggle('fa-cog-night-theme');
+			
 
 			// chaging the logo image
-			var wikiLogo = document.getElementsByClassName('wiki-logo')[0];
-			var wikiLogoSrc = wikiLogo.src;
+			// var wikiLogo = document.getElementsByClassName('wiki-logo')[0];
+			// var wikiLogoSrc = wikiLogo.src;
 
-			if (wikiLogoSrc.indexOf('white') != -1) {
-				document.getElementsByClassName('wiki-logo')[0].src = 'assets/images/wikipedia-logo-black.png';
-			} else {
-				document.getElementsByClassName('wiki-logo')[0].src = 'assets/images/wikipedia-logo-white.png';
-			}
-
-			// body background color
-			var body = document.getElementsByTagName('body')[0];
-			body.classList.toggle('body-dark-theme');
-
-			console.log(userSettings.darkTheme);
+			// if (wikiLogoSrc.indexOf('white') != -1) {
+			// 	document.getElementsByClassName('wiki-logo')[0].src = 'assets/images/wikipedia-logo-black.png';
+			// } else {
+			// 	document.getElementsByClassName('wiki-logo')[0].src = 'assets/images/wikipedia-logo-white.png';
+			// }
 		}
 
   </script>
