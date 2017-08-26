@@ -295,12 +295,21 @@
 
 		function nightVisionFixedElms() {
 			
+			var settingsMenu = document.getElementsByClassName('settings-menu')[0];
+			console.log(settingsMenu);
+
 			if (nigthVision.checked) {
 				userSettings.darkTheme = true;
-				console.log('true');
+
+				settingsMenu.classList.add('sm-dark-theme');
+				settingsMenu.classList.remove('sm-light-theme');
+
 			} else {
 				userSettings.darkTheme = false;
-				console.log('false');
+
+				settingsMenu.classList.add('sm-light-theme');
+				settingsMenu.classList.remove('sm-dark-theme');
+
 			}
 			util.store('userSettings', userSettings);
 			
