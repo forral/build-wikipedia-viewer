@@ -296,11 +296,10 @@
 		function nightVisionFixedElms() {
 			
 			var settingsMenu = document.getElementsByClassName('settings-menu')[0];
-
 			var wikiLogo = document.getElementsByClassName('wiki-logo')[0];
 			var wikiLogoSrc = wikiLogo.src;
-
 			var header = document.getElementsByTagName('header')[0];
+			var body = document.getElementsByTagName('body')[0];
 
 			if (nigthVision.checked) {
 				userSettings.darkTheme = true;
@@ -313,7 +312,8 @@
 				header.classList.add('header-dark-theme');
 				header.classList.remove('header-light-theme');
 
-				// iconElement.style.color = 'white';
+				body.classList.add('body-dark-theme');
+
 
 			} else {
 				userSettings.darkTheme = false;
@@ -325,6 +325,8 @@
 
 				header.classList.add('header-ligth-theme');
 				header.classList.remove('header-dark-theme');
+
+				body.classList.remove('body-dark-theme');
 
 			}
 
