@@ -131,10 +131,6 @@ input:focus {
   outline: none;
 }
 
-.fa-cog-night-theme {
-  color: white;
-}
-
 main,
 aside {
   display: inline-block;
@@ -230,6 +226,11 @@ table {
 tr :nth-child(2), tr :nth-child(3) {
   padding: 10px 19px;
   border-bottom: 1px solid lightgrey;
+}
+
+.widget-dark-theme {
+  color: #BDBDBD;
+  background-color: #202020;
 }
 
 /* Loading Animation */

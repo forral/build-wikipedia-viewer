@@ -81,6 +81,7 @@
   	var widgetCheckbox = document.getElementsByClassName('widget-checkbox')[0];
   	var nigthVision = document.getElementById('nigth-vision');
   	var iconElement = document.getElementsByClassName('fa-cog')[0];
+  	var widgetModule = document.getElementById('widget');
 
   	inputElement.focus();
 
@@ -225,13 +226,12 @@
 		}
 
 		function toggleHistoryWidget() {
-			var divElement = document.getElementById('widget');
 
 			if (widgetCheckbox.checked) {
-				divElement.className = '';
+				widgetModule.className = '';
 				userSettings.widget = true;
 			} else {
-				divElement.className = 'hide';
+				widgetModule.className = 'hide';
 				userSettings.widget = false;
 			}
 			util.store('userSettings', userSettings);
@@ -314,6 +314,9 @@
 
 				body.classList.add('body-dark-theme');
 
+				output.classList.add('sc-dark-theme');
+
+				widgetModule.classList.add('widget-dark-theme');
 
 			} else {
 				userSettings.darkTheme = false;
@@ -327,6 +330,10 @@
 				header.classList.remove('header-dark-theme');
 
 				body.classList.remove('body-dark-theme');
+
+				output.classList.remove('sc-dark-theme');
+
+				widgetModule.classList.remove('widget-dark-theme');
 
 			}
 
