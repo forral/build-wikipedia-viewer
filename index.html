@@ -90,7 +90,11 @@
 
 		numberInput.value = userSettings.numbOfArticles;
 		widgetCheckbox.checked = userSettings.widget;
+		nigthVision.checked = userSettings.darkTheme;
 		toggleHistoryWidget();
+		nightVisionFixedElms();
+
+
 
   	// https://github.com/forral/myTodoMVC/blob/master/todoApp.js#L97
 		inputElement.addEventListener('keyup', function(event) {
@@ -292,11 +296,13 @@
 		function nightVisionFixedElms() {
 			
 			if (nigthVision.checked) {
+				userSettings.darkTheme = true;
 				console.log('true');
 			} else {
+				userSettings.darkTheme = false;
 				console.log('false');
 			}
-
+			util.store('userSettings', userSettings);
 			
 
 			// chaging the logo image
