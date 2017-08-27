@@ -228,10 +228,10 @@
 		function toggleHistoryWidget() {
 
 			if (widgetCheckbox.checked) {
-				widgetModule.className = '';
+				widgetModule.classList.remove('hide');
 				userSettings.widget = true;
 			} else {
-				widgetModule.className = 'hide';
+				widgetModule.classList.add('hide');
 				userSettings.widget = false;
 			}
 			util.store('userSettings', userSettings);
